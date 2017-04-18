@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 		<script type="text/javascript" src="./includes/jquery/jquery-3.1.1.js"></script>
 	</head>
-	<body>
+	<body onLoad="setInterval('myFunction()',2000);">
 		<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
 		<button onclick="setTimeout(myFunction, 3000);">Try it</button>
 		<script>
@@ -23,7 +23,7 @@
 				alert('Hello');
 			}
 			$(document).click(function(){
-				alert("has pulsado en botón");
+				alert("has pulsado en botÃ³n");
 			 
 				// si lo deseamos podemos eliminar el evento click
 				// una vez utilizado por primera vez FALTA JQUERY!
