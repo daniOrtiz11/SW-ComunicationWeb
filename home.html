@@ -14,8 +14,79 @@
 		<link rel="stylesheet" type="text/css" href="./includes/css/style.css"> 
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 		<script type="text/javascript" src="./includes/jquery/jquery-3.1.1.js"></script>
+		<script language="javascript">
+		// esta parte entre las etiquetas head
+		<!--Script ofrecido por tutores.org -->
+		var nav = (document.layers) ? true : false
+		 
+		function arriba(Boton){
+		   if (!nav && Boton) Boton.style.backgroundColor="rgb(0, 226, 0)" //modificamos el color a verde
+		   	setTimeout(function() {fuera(Boton)}, 3000)
+		   	if (Boton.id == 'btn1')
+		   		setTimeout(function() {foco('btn2')}, 3000)
+		   	else
+		   		setTimeout(function() {foco('btn1')}, 3000)
+		}
+		 
+		function fuera(Boton){
+		   if (!nav && Boton) Boton.style.backgroundColor="red" // Color cuando el raton no toca el boton
+		}
+		 /*
+		function enviamos(Boton){
+		   if (!nav && Boton) Boton.style.backgroundColor="rgb(0, 226, 0)" // color al pulsar a verde
+		}*/
+		 function foco(idElemento){
+ 			document.getElementById(idElemento).focus();
+		}
+
+		</script>
 	</head>
-	<body onLoad="setInterval('myFunction()',2000);">
+	<body onLoad="foco('btn1');">
+
+	<div class="jumbotron text-center">
+	  <h1>Welcome to SWComunication</h1>
+	</div>
+
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">Cambiar modo</button>
+	  	</div>
+	  	
+	  	<!--<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">Velocidad</button>
+	  	</div>
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">+</button>
+	  	</div>
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">-</button>
+	  	</div>-->
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">Ayuda</button>
+	  	</div>
+	  	<div class="btn-group" role="group">
+	    	<button type="button" class="btn btn-default">Atrás</button>
+	  	</div>
+	   </div>
+
+	<div class="btn-group btn-group-justified" role="group" aria-label="...">
+		<div class="btn-group" role="group">
+	    	<button id="btn1" type="button" class="btn btn-ttc" onFocus="arriba(this)">RESPUESTAS RÁPIDAS</button>
+	  	</div>
+	  	<div class="btn-group" role="group">
+	    	<button id="btn2" type="button" class="btn btn-ttc" onFocus="arriba(this)">TECLADO INTERACTIVO</button>
+	  	</div>	
+	</div>
+	<!--
+	<div class="btn-group" role="group">
+	    	<button id="btn1" type="button" class="btn btn-ttc" onFocus="arriba(this)" onMouseOver="arriba(this)" onMouseOut="fuera(this)" onClick="setTimeout(function() {foco('btn2')}, 3000)">RESPUESTAS RÁPIDAS</button>
+	  	</div>
+	  	<div class="btn-group" role="group">
+	    	<button id="btn2" type="button" class="btn btn-ttc" onFocus="arriba(this)" onMouseOver="arriba(this)" onMouseOut="fuera(this)" onClick="setTimeout(function() {foco('btn1')}, 3000)">TECLADO INTERACTIVO</button>
+	  	</div>	-->
+
+		   		
+<!--
 		<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
 		<button onclick="setTimeout(myFunction, 3000);">Try it</button>
 		<script>
@@ -31,7 +102,7 @@
 		</script>
   
 		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="./includes/js/bootstrap.min.js"></script>
+		<script src="./includes/js/bootstrap.min.js"></script>-->
 	</body>
 </html>
 

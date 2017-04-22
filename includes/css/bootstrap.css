@@ -3006,7 +3006,7 @@ select[multiple].input-lg {
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.42857143;
+  line-height: 10.42857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3020,6 +3020,9 @@ select[multiple].input-lg {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+.btn2{
+   line-height: 50.42857143;
 }
 .btn:focus,
 .btn:active:focus,
