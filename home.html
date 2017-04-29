@@ -10,99 +10,229 @@
 		<title>SW-Comunication</title>
 	 
 		<!-- CSS de Bootstrap -->
-		<link href="./includes/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+		<!--<link href="./includes/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
 		<link rel="stylesheet" type="text/css" href="./includes/css/style.css"> 
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-		<script type="text/javascript" src="./includes/jquery/jquery-3.1.1.js"></script>
-		<script language="javascript">
-		// esta parte entre las etiquetas head
-		<!--Script ofrecido por tutores.org -->
-		var nav = (document.layers) ? true : false
-		 
-		function arriba(Boton){
-		   if (!nav && Boton) Boton.style.backgroundColor="rgb(0, 226, 0)" //modificamos el color a verde
-		   	setTimeout(function() {fuera(Boton)}, 3000)
-		   	if (Boton.id == 'btn1')
-		   		setTimeout(function() {foco('btn2')}, 3000)
-		   	else
-		   		setTimeout(function() {foco('btn1')}, 3000)
-		}
-		 
-		function fuera(Boton){
-		   if (!nav && Boton) Boton.style.backgroundColor="red" // Color cuando el raton no toca el boton
-		}
-		 /*
-		function enviamos(Boton){
-		   if (!nav && Boton) Boton.style.backgroundColor="rgb(0, 226, 0)" // color al pulsar a verde
-		}*/
-		 function foco(idElemento){
- 			document.getElementById(idElemento).focus();
-		}
-
-		</script>
+		<script type="text/javascript" src="./includes/jquery/jquery-3.1.1.js"></script>-->
+		    <!-- CSS de Bootstrap -->
+		<link href="includes/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+		<link rel="stylesheet" type="text/css" href="includes/css/style.css"> 
+		<script type="text/javascript" src="includes/jquery/jquery-3.1.1.js"></script>
+		<script src="./includes/js/bootstrap.min.js"></script>
+		<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 	</head>
-	<body onLoad="foco('btn1');">
+	<body onLoad="setInterval('seleccion()',1000);">
+		<nav class="navbar navbar-default" role="navigation">
+		  <!-- El logotipo y el icono que despliega el menú se agrupan
+			   para mostrarlos mejor en los dispositivos móviles -->
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+			  <span class="sr-only">Desplegar navegación</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">SW-Comunication</a>
+		  </div>
+		 
+		  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+			   otro elemento que se pueda ocultar al minimizar la barra -->
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+			  <li class="active" id="btnModo"><button type="button" class="btn btn-default navbar-btn" onclick="cambiarModo()" id="btnModo">Cambiar de modo</button></li>
+			  <p class="navbar-text" id="speedText">Velocidad: 2s</p>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
+			  <p class="navbar-text">Voz</p>
+			  <button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button>
+			</ul>		 
+			<ul class="nav navbar-nav navbar-right">
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()">Ayuda</button></li>
+			  <p class="navbar-text" id="user">Niño <span class="glyphicon glyphicon glyphicon-user"></span></p>
+			</ul>
+		  </div>
+		</nav>
+		<div class="jumbotron">
+		  <div class="container">
+			<h2>Página Principal</h2>
+			<p id="textOp">Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor</p>
+		  </div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+			<div class ="col-md-1"></div>
+			<div class="col-md-10">
+			<div class="btn-group" id="opciones">
+			  <button type="button" class="btn btn-default" id="b1"><h2>Preguntas Rápidas <span class="glyphicon glyphicon glyphicon-check"></span></h2></button>
+			  <button type="button" class="btn btn-default" id="b2"><h2>Teclado Interactivo <span class="glyphicon glyphicon glyphicon-console"></span></h2></button>
+			</div>
+			<div class ="col-md-1"></div>
+			</div>
+			</div>
+			<div class="row">
+			<div class ="col-md-3"></div>
+			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow1"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+			<div class ="col-md-5"></div>
+			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow2"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
 
-	<div class="jumbotron text-center">
-	  <h1>Welcome to SWComunication</h1>
-	</div>
+			<!-- Modal content-->
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h3 class="modal-title">Ayuda para usar SW-Comunication</h3>
+			  </div>
+			  <div class="modal-body">
+				<h4>Modo niño:</h4>
+				<p>Funciona mediante un simple click.</br>Cuando vea o escuche la opción deseada seleccionada en verde se debe hacer click.</p>
+				</br>
+				<h4>Modo madre:</h4>
+				<p>Se debe pulsar con el ratón en la opción "Cambiar de modo" del menú superior.</br>Una vez con las opciones en verde se puede empezar a configurar la aplicación.</br>
+				Se puede silenciar la voz desde el botón del menú superior.</br>
+				La velocidad se puede aumentar o disminuir entre 1, 2 o 3 segundos mediante los botones "+" y "-".</br>
+				Los cambios se verán reflejados al volver al modo niño, basta con volver a pulsar en "Cambiar de modo".
+				</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			  </div>
+			</div>
 
-	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-	  	<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">Cambiar modo</button>
-	  	</div>
-	  	
-	  	<!--<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">Velocidad</button>
-	  	</div>
-	  	<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">+</button>
-	  	</div>
-	  	<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">-</button>
-	  	</div>-->
-	  	<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">Ayuda</button>
-	  	</div>
-	  	<div class="btn-group" role="group">
-	    	<button type="button" class="btn btn-default">Atrás</button>
-	  	</div>
-	   </div>
-
-	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-		<div class="btn-group" role="group">
-	    	<button id="btn1" type="button" class="btn btn-ttc" onFocus="arriba(this)">RESPUESTAS RÁPIDAS</button>
-	  	</div>
-	  	<div class="btn-group" role="group">
-	    	<button id="btn2" type="button" class="btn btn-ttc" onFocus="arriba(this)">TECLADO INTERACTIVO</button>
-	  	</div>	
-	</div>
-	<!--
-	<div class="btn-group" role="group">
-	    	<button id="btn1" type="button" class="btn btn-ttc" onFocus="arriba(this)" onMouseOver="arriba(this)" onMouseOut="fuera(this)" onClick="setTimeout(function() {foco('btn2')}, 3000)">RESPUESTAS RÁPIDAS</button>
-	  	</div>
-	  	<div class="btn-group" role="group">
-	    	<button id="btn2" type="button" class="btn btn-ttc" onFocus="arriba(this)" onMouseOver="arriba(this)" onMouseOut="fuera(this)" onClick="setTimeout(function() {foco('btn1')}, 3000)">TECLADO INTERACTIVO</button>
-	  	</div>	-->
-
-		   		
-<!--
-		<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
-		<button onclick="setTimeout(myFunction, 3000);">Try it</button>
+		  </div>
+		</div>
+		<!--<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
+		<button onclick="setTimeout(myFunction, 3000);">Try it</button>-->
 		<script>
-			function myFunction() {
-				alert('Hello');
+		var op1 = true;
+		var op2 = false;
+		var mode = true; //true-->niño, false-->madre
+		var ini = false; //variable para que no salte el click de volver del modo madre
+		var voz = true;
+		var cont = 0;
+		var speed = 2;
+		if(responsiveVoice.voiceSupport()) {
+		responsiveVoice.setDefaultVoice("Spanish Female");
+		}
+			function seleccion() {
+				if(mode == true){
+					if(cont == speed){
+						cont = 0;
+						if(op1 == true){
+							op1 = false;
+							op2 = true;
+							document.getElementById("b1").style = "background-color: #ff3333";
+							document.getElementById("b2").style = "background-color: #00cd00";
+							document.getElementById("btnArrow2").style = "display:block";
+							document.getElementById("btnArrow1").style = "display:none";
+							$('#textOp').text("Teclado Interactivo: teclado con el mismo sistema de barrido desde donde podemos escribir");
+							if(responsiveVoice.voiceSupport()) {
+							if(voz == true)
+							responsiveVoice.speak("Teclado interactivo");
+							}
+						}
+						else if(op2 == true){
+							op1 = true;
+							op2 = false;
+							document.getElementById("b1").style = "background-color: #00cd00";
+							document.getElementById("b2").style = "background-color: #ff3333";
+							document.getElementById("btnArrow2").style = "display:none";
+							document.getElementById("btnArrow1").style = "display:block";
+							$('#textOp').text("Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor");
+							if(responsiveVoice.voiceSupport()) {
+							if(voz == true)
+							responsiveVoice.speak("Preguntas rápidas");
+							}
+						}
+					}
+					else{
+						cont++;
+					}
+				}
+				else{
+					$('#textOp').text("Modo madre: puede configurar la aplicación")
+					document.getElementById("b1").style = "background-color: #00cd00";
+					document.getElementById("b2").style = "background-color: #00cd00";
+					document.getElementById("btnArrow1").style = "display:none";
+					document.getElementById("btnArrow2").style = "display:none";
+				}
 			}
 			$(document).click(function(){
-				alert("has pulsado en botón");
-			 
-				// si lo deseamos podemos eliminar el evento click
-				// una vez utilizado por primera vez FALTA JQUERY!
+					//alert("has pulsado en botn");
+				if(mode == true && ini == true){
+					if(op1 == true)
+						alert("has pulsado en b1");
+					else if(op2 == true)
+						alert("has pulsado en b2");
+				}
+				else if(mode == true && ini == false){
+					ini = true;
+				}
+					// si lo deseamos podemos eliminar el evento click
+					// una vez utilizado por primera vez FALTA JQUERY!
 			})
+			function cambiarModo(){
+			//primero va el click del boton y luego la función del documento
+				if(mode == true){
+					ini = false;
+					document.getElementById("user").innerHTML = "Madre <span class='glyphicon glyphicon glyphicon-user'></span>";
+					mode = false;
+					
+				}
+				else{
+					document.getElementById("user").innerHTML = "Niño <span class='glyphicon glyphicon glyphicon-user'></span>";
+					mode = true;
+				}
+			}
+			//speed solo puede tener los valores 1 2 o 3
+			function aumentarVelocidad(){
+				if (mode == false){
+					if(speed > 1){
+						speed--;
+						cont = 0;
+						if(speed == 1)
+						$('#speedText').text("Velocidad: 1s");
+						else //speed == 2
+						$('#speedText').text("Velocidad: 2s");
+						}
+				}
+			}
+			function disminuirVelocidad(){
+				if (mode == false){
+					if(speed < 3){
+						speed++;
+						cont = 0;
+						if(speed == 2)
+						$('#speedText').text("Velocidad: 2s");
+						else //speed == 3
+						$('#speedText').text("Velocidad: 3s");
+						}
+				}
+			}
+			function mute(){
+				if(mode == false){
+					if(voz == true){
+						voz = false;
+						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-off'></span>";
+					}
+					else{
+						voz = true;
+						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-up'></span>";
+					}
+				}
+			}
+			function ayuda(){
+				if(mode == false)
+				$('#myModal').modal('show');
+			}
 		</script>
   
 		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="./includes/js/bootstrap.min.js"></script>-->
+		<script src="./includes/js/bootstrap.min.js"></script>
 	</body>
 </html>
 
