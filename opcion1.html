@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="./includes/img/communication.png" />
+		<!--<link rel="shortcut icon" href="./includes/css/logo.gif" />-->
 
 		<title>SW-Comunication</title>
 	 
@@ -55,7 +55,7 @@
 		</nav>
 		<div class="jumbotron">
 		  <div class="container">
-			<h2>Página Principal</h2>
+			<h2>Preguntas Rápidas</h2>
 			<p id="textOp">Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor</p>
 		  </div>
 		</div>
@@ -111,7 +111,7 @@
 		var op1 = true;
 		var op2 = false;
 		var mode = true; //true-->niño, false-->madre
-		var ini = true; //variable para que no salte el click de volver del modo madre
+		var ini = false; //variable para que no salte el click de volver del modo madre
 		var voz = true;
 		var cont = 0;
 		var speed = 2;
@@ -163,11 +163,11 @@
 			}
 			$(document).click(function(){
 					//alert("has pulsado en botn");
-				if(mode == true && ini == true){ //ERRRORORRORORORO
+				if(mode == true && ini == true){
 					if(op1 == true)
-						window.location = "./opcion1.html";
+						alert("has pulsado en b1");
 					else if(op2 == true)
-						window.location = "./opcion2.html";
+						alert("has pulsado en b2");
 				}
 				else if(mode == true && ini == false){
 					ini = true;
