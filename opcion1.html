@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--<link rel="shortcut icon" href="./includes/css/logo.gif" />-->
+		<link rel="shortcut icon" href="./includes/img/communication.png" />
 
 		<title>SW-Comunication</title>
 	 
@@ -33,7 +33,7 @@
 			  <span class="icon-bar"></span>
 			  <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">SW-Comunication</a>
+			<a class="navbar-brand" href="javascript:goHome()"><span class="glyphicon glyphicon glyphicon-home"></span> SW-Comunication</a>
 		  </div>
 		 
 		  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -44,11 +44,16 @@
 			  <p class="navbar-text" id="speedText">Velocidad: 2s</p>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
+			  <p class="navbar-text" id="speedText">Opciones: 2</p>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarOpciones()">-</button></li>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirOpciones()">+</button></li>
+			  <li ><button id="btnVacio" type="button" class="btn btn-default navbar-btn"> </button></li>
+			  <!--<li id="liTitulo"><button type="button" class="btn btn-default navbar-btn" onclick="setTitulo()" id="btnTitulo">Mostrar/No mostrar Titulo</button></li>-->
 			  <p class="navbar-text">Voz</p>
 			  <button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button>
 			</ul>		 
 			<ul class="nav navbar-nav navbar-right">
-			  <li><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()">Ayuda</button></li>
+			  <li id="liAyuda"><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()" id="btnAyuda">Ayuda <span class="glyphicon glyphicon glyphicon-question-sign"></span></button></li>
 			  <p class="navbar-text" id="user">Niño <span class="glyphicon glyphicon glyphicon-user"></span></p>
 			</ul>
 		  </div>
@@ -56,26 +61,37 @@
 		<div class="jumbotron">
 		  <div class="container">
 			<h2>Preguntas Rápidas</h2>
-			<p id="textOp">Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor</p>
+			<p id="textOp">Configure pregunta y respuestas en Modo Madre y a contestar!</p>
 		  </div>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
-			<div class ="col-md-1"></div>
-			<div class="col-md-10">
-			<div class="btn-group" id="opciones">
-			  <button type="button" class="btn btn-default" id="b1"><h2>Preguntas Rápidas <span class="glyphicon glyphicon glyphicon-check"></span></h2></button>
-			  <button type="button" class="btn btn-default" id="b2"><h2>Teclado Interactivo <span class="glyphicon glyphicon glyphicon-console"></span></h2></button>
+				<div class ="col-md-3"></div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="pregunta" placeholder="Título de la pregunta (vacío)" value="">
+				</div>
+				<div class ="col-md-3"></div>
 			</div>
-			<div class ="col-md-1"></div>
-			</div>
-			</div>
+			<br>
 			<div class="row">
-			<div class ="col-md-3"></div>
-			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow1"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
-			<div class ="col-md-5"></div>
-			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow2"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+				<div class ="col-md-1"></div>
+				<div class="col-md-10">
+				<div class="input-group" id="respuestas">
+				  <input type="text" class="form-control" id="r1" value="Sí">
+				  <input type="text" class="form-control" id="r2" value="No">
+				  <input type="text" class="form-control" id="ratras" value="Atrás" readonly>
+				</div>
+				<div class ="col-md-1"></div>
+				</div>
 			</div>
+			<!--<div class="row">
+			<div class ="col-md-2"></div>
+			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow1"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+			<div class ="col-md-2"></div>
+			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow2"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+			<div class ="col-md-2"></div>
+			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrowAtras"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
+			</div>-->
 		</div>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
@@ -95,6 +111,8 @@
 				<p>Se debe pulsar con el ratón en la opción "Cambiar de modo" del menú superior.</br>Una vez con las opciones en verde se puede empezar a configurar la aplicación.</br>
 				Se puede silenciar la voz desde el botón del menú superior.</br>
 				La velocidad se puede aumentar o disminuir entre 1, 2 o 3 segundos mediante los botones "+" y "-".</br>
+				Se pueden aumentar el número de respuestas posibles hasta un total de 3 mediante los botones "+" y "-".</br>
+				Si se rellena el campo del título de la pregunta será dictado también por voz e incluido en la secuencia. Basta con borrarlo para que no sea incluido.</br>
 				Los cambios se verán reflejados al volver al modo niño, basta con volver a pulsar en "Cambiar de modo".
 				</p>
 			  </div>
@@ -105,69 +123,111 @@
 
 		  </div>
 		</div>
-		<!--<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
-		<button onclick="setTimeout(myFunction, 3000);">Try it</button>-->
+		<div id="modal1" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h3 class="modal-title"><p id="modalText1">Respuesta elegida: </p></h3>
+			  </div>
+			  <div class="modal-footer">
+				<p> Haz otro click para salir</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<div id="modal2" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h3 class="modal-title"><p id="modalText2">Respuesta elegida: </p></h3>
+			  </div>
+			  <div class="modal-footer">
+				<p> Haz otro click para salir</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
 		<script>
 		var op1 = true;
 		var op2 = false;
+		var opatras = false;
 		var mode = true; //true-->niño, false-->madre
-		var ini = false; //variable para que no salte el click de volver del modo madre
+		var ini = true; //variable para que no salte el click de volver del modo madre
 		var voz = true;
+		var titulo = false;
+		var tituloModo = false;
+		var respondiendo = false;
 		var cont = 0;
 		var speed = 2;
 		if(responsiveVoice.voiceSupport()) {
 		responsiveVoice.setDefaultVoice("Spanish Female");
 		}
 			function seleccion() {
-				if(mode == true){
+				if(mode == true && respondiendo == false){
 					if(cont == speed){
 						cont = 0;
-						if(op1 == true){
-							op1 = false;
-							op2 = true;
-							document.getElementById("b1").style = "background-color: #ff3333";
-							document.getElementById("b2").style = "background-color: #00cd00";
-							document.getElementById("btnArrow2").style = "display:block";
-							document.getElementById("btnArrow1").style = "display:none";
-							$('#textOp').text("Teclado Interactivo: teclado con el mismo sistema de barrido desde donde podemos escribir");
-							if(responsiveVoice.voiceSupport()) {
-							if(voz == true)
-							responsiveVoice.speak("Teclado interactivo");
+						if(tituloModo == false)
+							seleccionSinTitulo();
+						else{
+							seleccionConTitulo();
 							}
-						}
-						else if(op2 == true){
-							op1 = true;
-							op2 = false;
-							document.getElementById("b1").style = "background-color: #00cd00";
-							document.getElementById("b2").style = "background-color: #ff3333";
-							document.getElementById("btnArrow2").style = "display:none";
-							document.getElementById("btnArrow1").style = "display:block";
-							$('#textOp').text("Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor");
-							if(responsiveVoice.voiceSupport()) {
-							if(voz == true)
-							responsiveVoice.speak("Preguntas rápidas");
-							}
-						}
 					}
 					else{
 						cont++;
 					}
 				}
 				else{
-					$('#textOp').text("Modo madre: puede configurar la aplicación")
-					document.getElementById("b1").style = "background-color: #00cd00";
-					document.getElementById("b2").style = "background-color: #00cd00";
-					document.getElementById("btnArrow1").style = "display:none";
-					document.getElementById("btnArrow2").style = "display:none";
+					document.getElementById("r1").style = "background-color: #00cd00";
+					document.getElementById("r2").style = "background-color: #00cd00";
+					document.getElementById("ratras").style = "background-color: #00cd00";
 				}
 			}
 			$(document).click(function(){
 					//alert("has pulsado en botn");
 				if(mode == true && ini == true){
-					if(op1 == true)
-						alert("has pulsado en b1");
-					else if(op2 == true)
-						alert("has pulsado en b2");
+					if(respondiendo == false){
+						if(op1 == true){
+							var bla = $('#r1').val();
+							respondiendo = true;
+							document.getElementById("modalText1").innerHTML = "Has seleccionado: "+bla;
+							$('#modal1').modal('show');
+						if(responsiveVoice.voiceSupport()) {
+							if(voz == true){
+								var aux = "Has seleccionado ";
+								bla = aux.concat(bla);
+								responsiveVoice.speak(bla);
+							}
+						}
+						}
+						else if(op2 == true){
+							var bla = $('#r2').val();
+							respondiendo = true;
+							document.getElementById("modalText2").innerHTML = "Has seleccionado: "+bla;
+							$('#modal2').modal('show');
+						if(responsiveVoice.voiceSupport()) {
+							if(voz == true){
+								var bla = $('#r2').val();
+								var aux = "Has seleccionado ";
+								bla = aux.concat(bla);
+								responsiveVoice.speak(bla);
+							}
+						}
+						}
+						else if(opatras == true){
+							window.location = "./home.html";
+						}
+					}
+					else{
+						respondiendo = false;
+						$('#modal2').modal('hide');
+						$('#modal1').modal('hide');
+					}
 				}
 				else if(mode == true && ini == false){
 					ini = true;
@@ -178,13 +238,32 @@
 			function cambiarModo(){
 			//primero va el click del boton y luego la función del documento
 				if(mode == true){
+					$('#textOp').text("Modo madre: puede configurar la aplicación");
 					ini = false;
 					document.getElementById("user").innerHTML = "Madre <span class='glyphicon glyphicon glyphicon-user'></span>";
+					document.getElementById("btnAyuda").style ="background-color:#eee; border-color:#eee;"
+					document.getElementById("liAyuda").style ="background-color:#eee; border-color:#eee;"
+					//document.getElementById("btnTitulo").style ="background-color:#eee; border-color:#eee;"
+					//document.getElementById("liTitulo").style ="background-color:#eee; border-color:#eee;"
 					mode = false;
 					
 				}
 				else{
+					$('#textOp').text("Configure pregunta y respuestas en Modo Madre y a contestar!");
 					document.getElementById("user").innerHTML = "Niño <span class='glyphicon glyphicon glyphicon-user'></span>";
+					document.getElementById("btnAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					document.getElementById("liAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					//document.getElementById("btnTitulo").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					//document.getElementById("liTitulo").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					if(document.getElementById("pregunta").value != ""){
+						tituloModo = true;
+						titulo = false;
+						op1 = false;
+						op2 = false;
+						opatras = true;
+						}
+					else
+						tituloModo = false;
 					mode = true;
 				}
 			}
@@ -213,6 +292,16 @@
 						}
 				}
 			}
+			function aumentarOpciones(){
+				if (mode == false){
+
+				}
+			}
+			function disminuirOpciones(){
+				if (mode == false){
+
+				}
+			}
 			function mute(){
 				if(mode == false){
 					if(voz == true){
@@ -228,6 +317,123 @@
 			function ayuda(){
 				if(mode == false)
 				$('#myModal').modal('show');
+			}
+			function goHome(){
+				if(mode == false)
+					window.location = "./home.html";
+			}
+			function seleccionSinTitulo(){
+				if(op1 == true){
+					op1 = false;
+					op2 = true;
+					opatras = false;
+					document.getElementById("r1").style = "background-color: #ff3333";
+					document.getElementById("r2").style = "background-color: #00cd00";
+					document.getElementById("ratras").style = "background-color: #ff3333";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						var bla = $('#r2').val();
+						responsiveVoice.speak(bla);
+					}
+					}
+				}
+				else if(op2 == true){
+					op1 = false;
+					op2 = false;
+					opatras = true;
+					document.getElementById("r1").style = "background-color: #ff3333";
+					document.getElementById("r2").style = "background-color: #ff3333";
+					document.getElementById("ratras").style = "background-color: #00cd00";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						//var bla = $('#r2').val();
+						responsiveVoice.speak("volver atrás");
+					}
+					}
+				}
+				else if(opatras == true){
+					op1 = true;
+					op2 = false;
+					opatras = false;
+					document.getElementById("r1").style = "background-color: #00cd00";
+					document.getElementById("r2").style = "background-color: #ff3333";
+					document.getElementById("ratras").style = "background-color: #ff3333";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						var bla = $('#r1').val();
+						responsiveVoice.speak(bla);
+					}
+					}
+				}
+			}
+			function setTitulo(){
+			
+			}
+			function seleccionConTitulo(){
+				if(titulo == true){
+					op1 = true;
+					op2 = false;
+					opatras = false;
+					titulo = false;
+					document.getElementById("r1").style = "background-color: #00cd00";
+					document.getElementById("r2").style = "background-color: #ff3333";
+					document.getElementById("ratras").style = "background-color: #ff3333";
+					document.getElementById("pregunta").style = "background-color: #ffffff";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						var bla = $('#r1').val();
+						responsiveVoice.speak(bla);
+					}
+					}
+				}
+				else if(op1 == true){
+					op1 = false;
+					op2 = true;
+					opatras = false;
+					titulo = false;
+					document.getElementById("r1").style = "background-color: #ff3333";
+					document.getElementById("r2").style = "background-color: #00cd00";
+					document.getElementById("ratras").style = "background-color: #ff3333";
+					document.getElementById("pregunta").style = "background-color: #ffffff";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						var bla = $('#r2').val();
+						responsiveVoice.speak(bla);
+					}
+					}
+				}
+				else if(op2 == true){
+					op1 = false;
+					op2 = false;
+					opatras = true;
+					titulo = false;
+					document.getElementById("r1").style = "background-color: #ff3333";
+					document.getElementById("r2").style = "background-color: #ff3333";
+					document.getElementById("ratras").style = "background-color: #00cd00";
+					document.getElementById("pregunta").style = "background-color: #ffffff";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						//var bla = $('#r1').val();
+						responsiveVoice.speak("Volver atrás");
+					}
+					}
+				}
+				else if(opatras == true){
+					op1 = false;
+					op2 = false;
+					opatras = false;
+					titulo = true;
+					document.getElementById("r1").style = "background-color: #00cd00";
+					document.getElementById("r2").style = "background-color: #00cd00";
+					document.getElementById("ratras").style = "background-color: #00cd00";
+					document.getElementById("pregunta").style = "background-color: #ffffff; border:2px solid #00cd00;";
+					if(responsiveVoice.voiceSupport()) {
+					if(voz == true){
+						var bla = $('#pregunta').val();
+						responsiveVoice.speak(bla);
+					}
+					}
+				}
 			}
 		</script>
   
