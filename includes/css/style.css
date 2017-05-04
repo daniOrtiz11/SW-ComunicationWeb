@@ -67,3 +67,8 @@ font-size: 250%;
 min-height:100px;
 max-height:100px;
 }
+
+#textoAbajo{
+	text-align:center;
+	font-weight:bold;
+}

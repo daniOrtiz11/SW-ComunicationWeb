@@ -41,7 +41,7 @@
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 			  <li class="active" id="btnModo"><button type="button" class="btn btn-default navbar-btn" onclick="cambiarModo()" id="btnModo">Cambiar de modo</button></li>
-			  <p class="navbar-text" id="speedText">Velocidad: 2s</p>
+			  <p class="navbar-text" id="speedText" value=2>Velocidad: 2s</p>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
 			  <p class="navbar-text" id="speedText">Opciones: 2</p>
@@ -83,7 +83,7 @@
 				</div>
 				<div class ="col-md-1"></div>
 				</div>
-			</div>
+			</div><br>
 			<!--<div class="row">
 			<div class ="col-md-2"></div>
 			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrow1"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
@@ -92,6 +92,7 @@
 			<div class ="col-md-2"></div>
 			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrowAtras"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
 			</div>-->
+			<div id="textoAbajo">Para descargar nuestra aplicación en su ordenador: <a href="" download="Sw-Comunication">Pulse aquí</a></div>
 		</div>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
@@ -154,6 +155,9 @@
 		</div>
 		
 		<script>
+		var speed = getGET();
+		$('#speedText').value = speed;
+		$('#speedText').text("Velocidad: " + speed + "s");
 		var op1 = true;
 		var op2 = false;
 		var opatras = false;
@@ -164,7 +168,6 @@
 		var tituloModo = false;
 		var respondiendo = false;
 		var cont = 0;
-		var speed = 2;
 		if(responsiveVoice.voiceSupport()) {
 		responsiveVoice.setDefaultVoice("Spanish Female");
 		}
@@ -273,10 +276,14 @@
 					if(speed > 1){
 						speed--;
 						cont = 0;
-						if(speed == 1)
-						$('#speedText').text("Velocidad: 1s");
-						else //speed == 2
-						$('#speedText').text("Velocidad: 2s");
+						if(speed == 1){
+							$('#speedText').text("Velocidad: 1s");
+							$('#speedText').value = 1;
+						}
+						else{ //speed == 2
+							$('#speedText').text("Velocidad: 2s");
+							$('#speedText').value = 2;
+						}
 						}
 				}
 			}
@@ -285,10 +292,14 @@
 					if(speed < 3){
 						speed++;
 						cont = 0;
-						if(speed == 2)
-						$('#speedText').text("Velocidad: 2s");
-						else //speed == 3
-						$('#speedText').text("Velocidad: 3s");
+						if(speed == 2){
+							$('#speedText').text("Velocidad: 2s");
+							$('#speedText').value = 2;
+						}
+						else{ //speed == 3
+							$('#speedText').text("Velocidad: 3s");
+							$('#speedText').value = 3;
+						}
 						}
 				}
 			}
@@ -320,7 +331,7 @@
 			}
 			function goHome(){
 				if(mode == false)
-					window.location = "./home.html";
+					window.location = "./home.html?speed="+ speed + "";
 			}
 			function seleccionSinTitulo(){
 				if(op1 == true){
@@ -433,6 +444,16 @@
 						responsiveVoice.speak(bla);
 					}
 					}
+				}
+			}
+			
+			function getGET()
+			{
+				var loc = document.location.href;
+				if(loc.indexOf('?')>0)
+				{
+					var getString = loc.split('=')[1];
+					return getString;
 				}
 			}
 		</script>
