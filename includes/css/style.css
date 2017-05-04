@@ -36,6 +36,12 @@ color: #fff;
 font-size: 200%;
 width: 100%;
 }
+#a, #b, #c, #d, #e, #f, #g, #h, #i, 
+#j, #k, #l, #m, #n, #enie, #o, #p, 
+#q, #r, #s, #t, #u, #v, #w, #x, #y,
+#z, #espacio, #borrar, #atras{
+	padding:30px 40px;
+}
 #r1,#r2,#ratras{
 font-size: 200%;
 width:33%;
@@ -66,9 +72,4 @@ text-align: center;
 font-size: 250%;
 min-height:100px;
 max-height:100px;
-}
-
-#textoAbajo{
-	text-align:center;
-	font-weight:bold;
 }
