@@ -92,7 +92,7 @@
 			<div class ="col-md-2"></div>
 			<div class ="col-md-1 btn btn-default btn-lg" id="btnArrowAtras"><span class="glyphicon glyphicon glyphicon-arrow-up"></span></div>
 			</div>-->
-			<div id="textoAbajo">Para descargar nuestra aplicación en su ordenador: <a href="" download="Sw-Comunication">Pulse aquí</a></div>
+			<div id="textoAbajo" style="display:none">Para descargar nuestra aplicación en su ordenador: <a href="" download="Sw-Comunication">Pulse aquí</a></div>
 		</div>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
@@ -114,7 +114,8 @@
 				La velocidad se puede aumentar o disminuir entre 1, 2 o 3 segundos mediante los botones "+" y "-".</br>
 				Se pueden aumentar el número de respuestas posibles hasta un total de 3 mediante los botones "+" y "-".</br>
 				Si se rellena el campo del título de la pregunta será dictado también por voz e incluido en la secuencia. Basta con borrarlo para que no sea incluido.</br>
-				Los cambios se verán reflejados al volver al modo niño, basta con volver a pulsar en "Cambiar de modo".
+				Los cambios se verán reflejados al volver al modo niño, basta con volver a pulsar en "Cambiar de modo".<br>
+				Se puede descargar la versión de escritorio de la aplicación desde el enlace ubicado al final de la página.
 				</p>
 			  </div>
 			  <div class="modal-footer">
@@ -170,6 +171,12 @@
 		var cont = 0;
 		if(responsiveVoice.voiceSupport()) {
 		responsiveVoice.setDefaultVoice("Spanish Female");
+		}
+		if(responsiveVoice.voiceSupport()) {
+		if(voz == true){
+			var bla = $('#r1').val();
+			responsiveVoice.speak(bla);
+		}
 		}
 			function seleccion() {
 				if(mode == true && respondiendo == false){
@@ -248,6 +255,7 @@
 					document.getElementById("liAyuda").style ="background-color:#eee; border-color:#eee;"
 					//document.getElementById("btnTitulo").style ="background-color:#eee; border-color:#eee;"
 					//document.getElementById("liTitulo").style ="background-color:#eee; border-color:#eee;"
+					document.getElementById("textoAbajo").style = "display:block";
 					mode = false;
 					
 				}
@@ -258,6 +266,7 @@
 					document.getElementById("liAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
 					//document.getElementById("btnTitulo").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
 					//document.getElementById("liTitulo").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					document.getElementById("textoAbajo").style = "display:none";
 					if(document.getElementById("pregunta").value != ""){
 						tituloModo = true;
 						titulo = false;
