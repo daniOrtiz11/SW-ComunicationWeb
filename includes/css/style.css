@@ -42,7 +42,7 @@ width: 100%;
 #z, #espacio, #borrar, #atras{
 	padding:30px 40px;
 }
-#r1,#r2,#ratras{
+#r1,#r2,#ratras,#r3{
 font-size: 200%;
 width:33%;
 text-align: center; 
@@ -52,15 +52,15 @@ max-height:200px;
 #r1{
 	background-color: #00cd00;
 }
-#r2,#ratras{
+#r2,#ratras, #r3{
 	background-color: #ff3333;
 }
-#btnAyuda, #btnTitulo{
+#btnAyuda, #btnOpciones{
 	background-color:#f8f8f8;
 	border-color:#f8f8f8;
 	color:#777;
 }
-#btnAyuda.hover, #btnTitulo.hover{
+#btnAyuda.hover, #btnOpciones.hover{
 	color:#000;
 }
 #btnVacio{
