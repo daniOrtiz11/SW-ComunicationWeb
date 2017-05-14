@@ -40,9 +40,10 @@ width: 100%;
 #j, #k, #l, #m, #n, #enie, #o, #p, 
 #q, #r, #s, #t, #u, #v, #w, #x, #y,
 #z, #espacio, #borrar, #atras{
-	padding:30px 40px;
+	padding:3.5%;
+
 }
-#r1,#r2,#ratras,#r3{
+#r1,#r2,#ratras{
 font-size: 200%;
 width:33%;
 text-align: center; 
@@ -52,15 +53,15 @@ max-height:200px;
 #r1{
 	background-color: #00cd00;
 }
-#r2,#ratras, #r3{
+#r2,#ratras{
 	background-color: #ff3333;
 }
-#btnAyuda, #btnOpciones{
+#btnAyuda, #btnTitulo{
 	background-color:#f8f8f8;
 	border-color:#f8f8f8;
 	color:#777;
 }
-#btnAyuda.hover, #btnOpciones.hover{
+#btnAyuda.hover, #btnTitulo.hover{
 	color:#000;
 }
 #btnVacio{
