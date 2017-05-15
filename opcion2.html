@@ -152,6 +152,9 @@
 		<!--<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
 		<button onclick="setTimeout(myFunction, 3000);">Try it</button>-->
 		<script>
+		var speed = getGET();
+		$('#speedText').value = speed;
+		$('#speedText').text("Velocidad: " + speed + "s");
 		var opCol1 = true; //AJR
 		var opCol2 = false; //BKS
 		var opCol3 = false; //CLT
@@ -198,7 +201,6 @@
 		var ini = true; //variable para que no salte el click de volver del modo madre
 		var voz = true;
 		var cont = 0;
-		var speed = 2;
 		var cadenaBorrar = "";
 		var movil = 0;
 		var columnas = true;
@@ -1944,10 +1946,14 @@
 					if(speed > 1){
 						speed--;
 						cont = 0;
-						if(speed == 1)
-						$('#speedText').text("Velocidad: 1s");
-						else //speed == 2
+						if(speed == 1){
+							$('#speedText').text("Velocidad: 1s");
+							$('#speedText').value = 1;
+						}
+						else {//speed == 2
 						$('#speedText').text("Velocidad: 2s");
+						$('#speedText').value = 2;
+						}
 						}
 				}
 			}
@@ -1956,10 +1962,14 @@
 					if(speed < 3){
 						speed++;
 						cont = 0;
-						if(speed == 2)
+						if(speed == 2){
 						$('#speedText').text("Velocidad: 2s");
-						else //speed == 3
+						$('#speedText').value = 2;
+						}
+						else{ //speed == 3
 						$('#speedText').text("Velocidad: 3s");
+						$('#speedText').value = 3;
+						}
 						}
 				}
 			}
@@ -1982,6 +1992,15 @@
 			function goHome(){
 				if(mode == false)
 					window.location = "./home.html";
+			}
+			function getGET()
+			{
+				var loc = document.location.href;
+				if(loc.indexOf('?')>0)
+				{
+					var getString = loc.split('=')[1];
+					return getString;
+				}
 			}
 		</script>
   
