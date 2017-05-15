@@ -205,6 +205,7 @@
 		var movil = 0;
 		var columnas = true;
 		var cadenaEscribir = "";
+		var salir = false;
 
 		if (screen.width > 1024){
 			movil = 0;
@@ -1753,7 +1754,7 @@
 							else if(op30 == true){
 								
 								op30 = false;
-								op1=true;
+								salir = true;
 								document.getElementById("a").style = "background-color: #EAECEE";
 								document.getElementById("b").style = "background-color: #EAECEE";
 								document.getElementById("c").style = "background-color: #EAECEE";
@@ -1789,6 +1790,10 @@
 								if(voz == true)
 								responsiveVoice.speak("VOLVER ATRÁS");
 								}
+								//op1 = true;
+								
+							}
+							else{
 								opCol1 = true;
 								columnas = true;
 							}
@@ -1850,10 +1855,16 @@
 							op9 = true;
 							columnas = false;
 						}
+						else if (salir == true)
+							window.location = "./home.html";
 					} else {
 							
-						if(op1 == true)
+						if (salir == true)
 							window.location = "./home.html";
+						if(op1 == true){
+							salir = true;
+							window.location = "./home.html";
+						}
 						else if(op2 == true)
 							document.getElementById("pregunta").value += cadenaEscribir;
 						else if(op3 == true)
@@ -1907,17 +1918,14 @@
 						else if(op27 == true)
 							document.getElementById("pregunta").value += cadenaEscribir;
 						else if(op28 == true){
-							
-							
+							document.getElementById("pregunta").value += cadenaEscribir;						
 						}
-						else if(op29 == true){
+						else if(op29 == true){						
 							document.getElementById("pregunta").value += cadenaEscribir;
-							
-							
 						}
 						else if(op30 == true){
-							cadenaBorrar = document.getElementById("pregunta").value.substring(0, (document.getElementById("pregunta").value.lenght)-1);
-							document.getElementById("pregunta").value = cadenaBorrar;						
+								cadenaBorrar = document.getElementById("pregunta").value.substring(0, (document.getElementById("pregunta").value.lenght)-1);
+							document.getElementById("pregunta").value = cadenaBorrar;			
 						}
 					}
 				}
