@@ -40,8 +40,12 @@ width: 100%;
 #j, #k, #l, #m, #n, #enie, #o, #p, 
 #q, #r, #s, #t, #u, #v, #w, #x, #y,
 #z, #espacio, #borrar, #atras{
-	padding:3.5%;
+	width: 11.1%;
+	padding: 3%;
 
+}
+#espacio, #borrar, #atras{
+	width: 33.1%;
 }
 #r1,#r2,#ratras{
 font-size: 200%;
