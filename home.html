@@ -8,12 +8,6 @@
 		<link rel="shortcut icon" href="./includes/img/communication.png" />
 
 		<title>SW-Comunication</title>
-	 
-		<!-- CSS de Bootstrap -->
-		<!--<link href="./includes/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
-		<link rel="stylesheet" type="text/css" href="./includes/css/style.css"> 
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-		<script type="text/javascript" src="./includes/jquery/jquery-3.1.1.js"></script>-->
 		    <!-- CSS de Bootstrap -->
 		<link href="includes/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
 		<link rel="stylesheet" type="text/css" href="includes/css/style.css"> 
@@ -23,8 +17,6 @@
 	</head>
 	<body onLoad="setInterval('seleccion()',1000);">
 		<nav class="navbar navbar-default" role="navigation">
-		  <!-- El logotipo y el icono que despliega el menú se agrupan
-			   para mostrarlos mejor en los dispositivos móviles -->
 		  <div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-ex1-collapse">
@@ -36,8 +28,6 @@
 			<a class="navbar-brand" href="javascript:goHome()"><span class="glyphicon glyphicon glyphicon-home"></span> SW-Comunication</a>
 		  </div>
 		 
-		  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-			   otro elemento que se pueda ocultar al minimizar la barra -->
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 			  <li class="active" id="btnModo"><button type="button" class="btn btn-default navbar-btn" onclick="cambiarModo()" id="btnModo">Cambiar de modo</button></li>
@@ -45,7 +35,7 @@
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
 			  <p class="navbar-text">Voz</p>
-			  <button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button></li>
 			</ul>		 
 			<ul class="nav navbar-nav navbar-right">
 			  <li id="liAyuda"><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()" id="btnAyuda">Ayuda <span class="glyphicon glyphicon glyphicon-question-sign"></span></button></li>
@@ -108,8 +98,6 @@
 
 		  </div>
 		</div>
-		<!--<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
-		<button onclick="setTimeout(myFunction, 3000);">Try it</button>-->
 		<script>
 		var speed = 2
 		var loc = document.location.href;
@@ -131,8 +119,8 @@
 			if(voz == true)
 				responsiveVoice.speak("Preguntas rápidas");
 		}
-		document.getElementById("btnArrow2").style = "display:none";
-		document.getElementById("btnArrow1").style = "display:block";
+		$('#btnArrow2').css("display", "none");
+		$('#btnArrow1').css("display", "block");
 		
 			function seleccion() {
 				if(mode == true){
@@ -141,10 +129,10 @@
 						if(op1 == true){
 							op1 = false;
 							op2 = true;
-							document.getElementById("b1").style = "background-color: #ff3333";
-							document.getElementById("b2").style = "background-color: #00cd00";
-							document.getElementById("btnArrow2").style = "display:block";
-							document.getElementById("btnArrow1").style = "display:none";
+							$('#b1').css("background-color", "#ff3333");
+							$('#b2').css("background-color", "#00cd00");
+							$('#btnArrow2').css("display", "block");
+							$('#btnArrow1').css("display", "none");
 							$('#textOp').text("Teclado Interactivo: teclado con el mismo sistema de barrido desde donde podemos escribir");
 							if(responsiveVoice.voiceSupport()) {
 							if(voz == true)
@@ -154,10 +142,10 @@
 						else if(op2 == true){
 							op1 = true;
 							op2 = false;
-							document.getElementById("b1").style = "background-color: #00cd00";
-							document.getElementById("b2").style = "background-color: #ff3333";
-							document.getElementById("btnArrow2").style = "display:none";
-							document.getElementById("btnArrow1").style = "display:block";
+							$('#b1').css("background-color", "#00cd00");
+							$('#b2').css("background-color", "#ff3333");
+							$('#btnArrow2').css("display", "none");
+							$('#btnArrow1').css("display", "block");
 							$('#textOp').text("Preguntas rápidas: menú de opciones configurables con el fin de solucionar preguntas con un interlocutor");
 							if(responsiveVoice.voiceSupport()) {
 							if(voz == true)
@@ -171,15 +159,15 @@
 				}
 				else{
 					$('#textOp').text("Modo madre: puede configurar la aplicación")
-					document.getElementById("b1").style = "background-color: #00cd00";
-					document.getElementById("b2").style = "background-color: #00cd00";
-					document.getElementById("btnArrow1").style = "display:none";
-					document.getElementById("btnArrow2").style = "display:none";
+					$('#b1').css("background-color", "#00cd00");
+					$('#b2').css("background-color", "#00cd00");
+					$('#btnArrow2').css("display", "none");
+					$('#btnArrow1').css("display", "none");
 				}
 			}
 			$(document).click(function(){
 					//alert("has pulsado en botn");
-				if(mode == true && ini == true){ //ERRRORORRORORORO
+				if(mode == true && ini == true){ 
 					if(op1 == true)
 						window.location = "./opcion1.html?speed="+ speed + "";
 					else if(op2 == true)
@@ -188,25 +176,23 @@
 				else if(mode == true && ini == false){
 					ini = true;
 				}
-					// si lo deseamos podemos eliminar el evento click
-					// una vez utilizado por primera vez FALTA JQUERY!
 			})
 			function cambiarModo(){
 			//primero va el click del boton y luego la función del documento
 				if(mode == true){
 					ini = false;
-					document.getElementById("user").innerHTML = "Madre <span class='glyphicon glyphicon glyphicon-user'></span>";
-					document.getElementById("btnAyuda").style ="background-color:#eee; border-color:#eee;"
-					document.getElementById("liAyuda").style ="background-color:#eee; border-color:#eee;"
-					document.getElementById("textoAbajo").style = "display:block";
+					$('#user').html("Madre <span class='glyphicon glyphicon glyphicon-user'></span>");
+					$('#btnAyuda').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#liAyuda').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#textoAbajo').css("display", "block");
 					mode = false;
 					
 				}
 				else{
-					document.getElementById("textoAbajo").style = "display:none";
-					document.getElementById("user").innerHTML = "Niño <span class='glyphicon glyphicon glyphicon-user'></span>";
-					document.getElementById("btnAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
-					document.getElementById("liAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
+					$('#user').html("Niño <span class='glyphicon glyphicon glyphicon-user'></span>");
+					$('#btnAyuda').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#liAyuda').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#textoAbajo').css("display", "none");
 					mode = true;
 				}
 			}
@@ -247,11 +233,11 @@
 				if(mode == false){
 					if(voz == true){
 						voz = false;
-						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-off'></span>";
+						$('#btnMute').html("<span class='glyphicon glyphicon glyphicon-volume-off'></span>");
 					}
 					else{
 						voz = true;
-						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-up'></span>";
+						$('#btnMute').html("<span class='glyphicon glyphicon glyphicon-volume-up'></span>");
 					}
 				}
 			}
