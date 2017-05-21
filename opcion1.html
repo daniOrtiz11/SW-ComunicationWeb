@@ -46,7 +46,7 @@
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
 			  <p class="navbar-text">Voz</p>
-			  <button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button>
+			  <li><button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button></li>
 			</ul>		 
 			<ul class="nav navbar-nav navbar-right">
 			  <li id="liAyuda"><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()" id="btnAyuda">Ayuda <span class="glyphicon glyphicon glyphicon-question-sign"></span></button></li>
@@ -200,16 +200,24 @@
 				}
 				else{
 					if(opciones == 2){
-					document.getElementById("r1").style = "background-color: #00cd00";
+					/*document.getElementById("r1").style = "background-color: #00cd00";
 					document.getElementById("r2").style = "background-color: #00cd00";
 					document.getElementById("ratras").style = "background-color: #00cd00";
-					document.getElementById("r3").style = "display: none;";
+					document.getElementById("r3").style = "display: none;";*/
+					$('#r1').css("background-color", "#00cd00");
+					$('#r2').css("background-color", "#00cd00");
+					$('#ratras').css("background-color", "#00cd00");
+					$('#r3').css("display", "none");
 					}
 					else{
-					document.getElementById("r1").style = "width:25%; background-color: #00cd00";
+					/*document.getElementById("r1").style = "width:25%; background-color: #00cd00";
 					document.getElementById("r2").style = "width:25%; background-color: #00cd00";
 					document.getElementById("ratras").style = "width:25%; background-color: #00cd00";
-					document.getElementById("r3").style = "display: block; width:25%; background-color: #00cd00";
+					document.getElementById("r3").style = "display: block; width:25%; background-color: #00cd00";*/
+					$('#r1').css({"background-color": "#00cd00", "width": "25%"});
+					$('#r2').css({"background-color": "#00cd00", "width": "25%"});
+					$('#ratras').css({"background-color": "#00cd00", "width": "25%"});
+					$('#r3').css({"background-color": "#00cd00", "width": "25%", "display:": "block"});
 					}
 				}
 			}
@@ -220,7 +228,8 @@
 						if(op1 == true){
 							var bla = $('#r1').val();
 							respondiendo = true;
-							document.getElementById("modalText1").innerHTML = "Has seleccionado: "+bla;
+							//document.getElementById("modalText1").innerHTML = "Has seleccionado: "+bla;
+							$('#modalText1').html("Has seleccionado: "+bla);
 							$('#modal1').modal('show');
 						if(responsiveVoice.voiceSupport()) {
 							if(voz == true){
@@ -233,7 +242,8 @@
 						else if(op2 == true){
 							var bla = $('#r2').val();
 							respondiendo = true;
-							document.getElementById("modalText2").innerHTML = "Has seleccionado: "+bla;
+							//document.getElementById("modalText2").innerHTML = "Has seleccionado: "+bla;
+							$('#modalText2').html("Has seleccionado: "+bla);
 							$('#modal2').modal('show');
 						if(responsiveVoice.voiceSupport()) {
 							if(voz == true){
@@ -250,7 +260,8 @@
 						else if(op3 == true){
 							var bla = $('#r3').val();
 							respondiendo = true;
-							document.getElementById("modalText3").innerHTML = "Has seleccionado: "+bla;
+							//document.getElementById("modalText3").innerHTML = "Has seleccionado: "+bla;
+							$('#modalText3').html("Has seleccionado: "+bla);
 							$('#modal3').modal('show');
 						if(responsiveVoice.voiceSupport()) {
 							if(voz == true){
@@ -280,24 +291,37 @@
 				if(mode == true){
 					$('#textOp').text("Modo madre: puede configurar la aplicación");
 					ini = false;
-					document.getElementById("user").innerHTML = "Madre <span class='glyphicon glyphicon glyphicon-user'></span>";
+					/*document.getElementById("user").innerHTML = "Madre <span class='glyphicon glyphicon glyphicon-user'></span>";
 					document.getElementById("btnAyuda").style ="background-color:#eee; border-color:#eee;"
 					document.getElementById("liAyuda").style ="background-color:#eee; border-color:#eee;"
 					document.getElementById("btnOpciones").style ="background-color:#eee; border-color:#eee;"
 					document.getElementById("liOpciones").style ="background-color:#eee; border-color:#eee;"
-					document.getElementById("textoAbajo").style = "display:block";
+					document.getElementById("textoAbajo").style = "display:block";*/
+					$('#user').html("Madre <span class='glyphicon glyphicon glyphicon-user'></span>");
+					$('#btnAyuda').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#liAyuda').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#btnOpciones').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#liOpciones').css({"background-color": "#eee", "border-color": "#eee"});
+					$('#textoAbajo').css("display", "block");
 					mode = false;
 					
 				}
 				else{
 					$('#textOp').text("Configure pregunta y respuestas en Modo Madre y a contestar!");
-					document.getElementById("user").innerHTML = "Niño <span class='glyphicon glyphicon glyphicon-user'></span>";
+					/*document.getElementById("user").innerHTML = "Niño <span class='glyphicon glyphicon glyphicon-user'></span>";
 					document.getElementById("btnAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
 					document.getElementById("liAyuda").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
 					document.getElementById("btnOpciones").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
 					document.getElementById("liOpciones").style ="background-color:#f8f8f8; border-color:#f8f8f8;"
-					document.getElementById("textoAbajo").style = "display:none";
-					if(document.getElementById("pregunta").value != ""){
+					document.getElementById("textoAbajo").style = "display:none";*/
+					$('#user').html("Niño <span class='glyphicon glyphicon glyphicon-user'></span>");
+					$('#btnAyuda').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#liAyuda').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#btnOpciones').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#liOpciones').css({"background-color": "#f8f8f8", "border-color": "#f8f8f8"});
+					$('#textoAbajo').css("display", "none");
+					//if(document.getElementById("pregunta").value != ""){
+					if($('#pregunta').val() != ""){
 						tituloModo = true;
 						titulo = false;
 						op1 = false;
@@ -356,11 +380,13 @@
 				if(mode == false){
 					if(voz == true){
 						voz = false;
-						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-off'></span>";
+						//document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-off'></span>";
+						$('#btnMute').html("<span class='glyphicon glyphicon glyphicon-volume-off'></span>");
 					}
 					else{
 						voz = true;
-						document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-up'></span>";
+						//document.getElementById("btnMute").innerHTML = "<span class='glyphicon glyphicon glyphicon-volume-up'></span>";
+						$('#btnMute').html("<span class='glyphicon glyphicon glyphicon-volume-up'></span>");
 					}
 				}
 			}
@@ -378,9 +404,12 @@
 						op1 = false;
 						op2 = true;
 						opatras = false;
-						document.getElementById("r1").style = "background-color: #ff3333";
+						/*document.getElementById("r1").style = "background-color: #ff3333";
 						document.getElementById("r2").style = "background-color: #00cd00";
-						document.getElementById("ratras").style = "background-color: #ff3333";
+						document.getElementById("ratras").style = "background-color: #ff3333";*/
+						$('#r1').css("background-color", "#ff3333");
+						$('#r2').css("background-color", "#00cd00");
+						$('#ratras').css("background-color", "#ff3333");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r2').val();
@@ -392,9 +421,12 @@
 						op1 = false;
 						op2 = false;
 						opatras = true;
-						document.getElementById("r1").style = "background-color: #ff3333";
+						/*document.getElementById("r1").style = "background-color: #ff3333";
 						document.getElementById("r2").style = "background-color: #ff3333";
-						document.getElementById("ratras").style = "background-color: #00cd00";
+						document.getElementById("ratras").style = "background-color: #00cd00";*/
+						$('#r1').css("background-color", "#ff3333");
+						$('#r2').css("background-color", "#ff3333");
+						$('#ratras').css("background-color", "#00cd00");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							//var bla = $('#r2').val();
@@ -406,9 +438,12 @@
 						op1 = true;
 						op2 = false;
 						opatras = false;
-						document.getElementById("r1").style = "background-color: #00cd00";
+						/*document.getElementById("r1").style = "background-color: #00cd00";
 						document.getElementById("r2").style = "background-color: #ff3333";
-						document.getElementById("ratras").style = "background-color: #ff3333";
+						document.getElementById("ratras").style = "background-color: #ff3333";*/
+						$('#r1').css("background-color", "#00cd00");
+						$('#r2').css("background-color", "#ff3333");
+						$('#ratras').css("background-color", "#ff3333");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r1').val();
@@ -422,10 +457,14 @@
 						op2 = true;
 						op3 = false;
 						opatras = false;
-						document.getElementById("r1").style = "width:25%; background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%; background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
-						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
+						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r3').css({"background-color": "#ff3333", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r2').val();
@@ -438,10 +477,14 @@
 						op2 = false;
 						op3 = true;
 						opatras = false;
-						document.getElementById("r1").style = "width:25%;background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r3").style = "width:25%;background-color: #00cd00";
-						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
+						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#00cd00", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r3').val();
@@ -454,10 +497,14 @@
 						op2 = false;
 						op3 = false;
 						opatras = true;
-						document.getElementById("r1").style = "width:25%;background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
-						document.getElementById("ratras").style = "width:25%;background-color: #00cd00";
+						document.getElementById("ratras").style = "width:25%;background-color: #00cd00";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#ff3333", "width": "25%"});
+						$('#ratras').css({"background-color": "#00cd00", "width": "25%"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r3').val();
@@ -470,10 +517,14 @@
 						op2 = false;
 						op3 = false;
 						opatras = false;
-						document.getElementById("r1").style = "width:25%;background-color: #00cd00";
+						/*document.getElementById("r1").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
-						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
+						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";*/
+						$('#r1').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#ff3333", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r1').val();
@@ -493,10 +544,14 @@
 						op2 = false;
 						opatras = false;
 						titulo = false;
-						document.getElementById("r1").style = "background-color: #00cd00";
+						/*document.getElementById("r1").style = "background-color: #00cd00";
 						document.getElementById("r2").style = "background-color: #ff3333";
 						document.getElementById("ratras").style = "background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css("background-color", "#00cd00");
+						$('#r2').css("background-color", "#ff3333");
+						$('#ratras').css("background-color", "#ff3333");
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r1').val();
@@ -509,10 +564,14 @@
 						op2 = true;
 						opatras = false;
 						titulo = false;
-						document.getElementById("r1").style = "background-color: #ff3333";
+						/*document.getElementById("r1").style = "background-color: #ff3333";
 						document.getElementById("r2").style = "background-color: #00cd00";
 						document.getElementById("ratras").style = "background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css("background-color", "#ff3333");
+						$('#r2').css("background-color", "#00cd00");
+						$('#ratras').css("background-color", "#ff3333");
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r2').val();
@@ -525,10 +584,14 @@
 						op2 = false;
 						opatras = true;
 						titulo = false;
-						document.getElementById("r1").style = "background-color: #ff3333";
+						/*document.getElementById("r1").style = "background-color: #ff3333";
 						document.getElementById("r2").style = "background-color: #ff3333";
 						document.getElementById("ratras").style = "background-color: #00cd00";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css("background-color", "#ff3333");
+						$('#r2').css("background-color", "#ff3333");
+						$('#ratras').css("background-color", "#00cd00");
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							//var bla = $('#r1').val();
@@ -541,10 +604,14 @@
 						op2 = false;
 						opatras = false;
 						titulo = true;
-						document.getElementById("r1").style = "background-color: #00cd00";
+						/*document.getElementById("r1").style = "background-color: #00cd00";
 						document.getElementById("r2").style = "background-color: #00cd00";
 						document.getElementById("ratras").style = "background-color: #00cd00";
-						document.getElementById("pregunta").style = "background-color: #ffffff; border:2px solid #00cd00;";
+						document.getElementById("pregunta").style = "background-color: #ffffff; border:2px solid #00cd00;";*/
+						$('#r1').css("background-color", "#00cd00");
+						$('#r2').css("background-color", "#00cd00");
+						$('#ratras').css("background-color", "#00cd00");
+						$('#pregunta').css({"background-color": "#ffffff", "border": "2px solid #00cd00"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#pregunta').val();
@@ -560,11 +627,16 @@
 						op3 = false;
 						opatras = false;
 						titulo = false;
-						document.getElementById("r1").style = "width:25%;background-color: #00cd00";
+						/*document.getElementById("r1").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
 						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#ff3333", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r1').val();
@@ -578,11 +650,16 @@
 						op3 = false;
 						opatras = false;
 						titulo = false;
-						document.getElementById("r1").style = "width:25%;background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
 						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r3').css({"background-color": "#ff3333", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r2').val();
@@ -596,11 +673,16 @@
 						op3 = true;
 						opatras = false;
 						titulo = false;
-						document.getElementById("r1").style = "width:25%;background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r3").style = "width:25%;background-color: #00cd00";
 						document.getElementById("ratras").style = "width:25%;background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#00cd00", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#r3').val();
@@ -614,11 +696,16 @@
 						op3 = false;
 						opatras = true;
 						titulo = false;
-						document.getElementById("r1").style = "width:25%;background-color: #ff3333";
+						/*document.getElementById("r1").style = "width:25%;background-color: #ff3333";
 						document.getElementById("r2").style = "width:25%;background-color: #ff3333";
 						document.getElementById("ratras").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r3").style = "width:25%;background-color: #ff3333";
-						document.getElementById("pregunta").style = "background-color: #ffffff";
+						document.getElementById("pregunta").style = "background-color: #ffffff";*/
+						$('#r1').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r2').css({"background-color": "#ff3333", "width": "25%"});
+						$('#r3').css({"background-color": "#00cd00", "width": "25%"});
+						$('#ratras').css({"background-color": "#ff3333", "width": "25%"});
+						$('#pregunta').css("background-color", "#ffffff");
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							//var bla = $('#r3').val();
@@ -632,11 +719,16 @@
 						op3 = false;
 						opatras = false;
 						titulo = true;
-						document.getElementById("r1").style = "width:25%;background-color: #00cd00";
+						/*document.getElementById("r1").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r2").style = "width:25%;background-color: #00cd00";
 						document.getElementById("r3").style = "width:25%;background-color: #00cd00";
 						document.getElementById("ratras").style = "width:25%;background-color: #00cd00";
-						document.getElementById("pregunta").style = "background-color: #ffffff; border:2px solid #00cd00;";
+						document.getElementById("pregunta").style = "background-color: #ffffff; border:2px solid #00cd00;";*/
+						$('#r1').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r2').css({"background-color": "#00cd00", "width": "25%"});
+						$('#r3').css({"background-color": "#00cd00", "width": "25%"});
+						$('#ratras').css({"background-color": "#00cd00", "width": "25%"});
+						$('#pregunta').css({"background-color": "#ffffff", "border": "2px solid #00cd00"});
 						if(responsiveVoice.voiceSupport()) {
 						if(voz == true){
 							var bla = $('#pregunta').val();
