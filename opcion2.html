@@ -40,7 +40,7 @@
 			   otro elemento que se pueda ocultar al minimizar la barra -->
 		  <div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-			  <li class="active" id="btnModos"><button type="button" class="btn btn-default navbar-btn" onclick="cambiarModo()" id="btnModo">Cambiar de modo</button></li>
+			  <li class="active" id="btnModo"><button type="button" class="btn btn-default navbar-btn" onclick="cambiarModo()" id="btnModo">Cambiar de modo</button></li>
 			  <p class="navbar-text" id="speedText">Velocidad: 2s</p>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="aumentarVelocidad()">-</button></li>
 			  <li><button type="button" class="btn btn-default navbar-btn" onclick="disminuirVelocidad()">+</button></li>
@@ -48,7 +48,7 @@
 			  <button type="button" class="btn btn-default navbar-btn" onclick="mute()" id="btnMute"><span class="glyphicon glyphicon glyphicon-volume-up"></span></button>
 			</ul>		 
 			<ul class="nav navbar-nav navbar-right">
-			  <li><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()">Ayuda</button></li>
+			  <li id="liAyuda"><button type="button" class="btn btn-default navbar-btn" onclick="ayuda()" id="btnAyuda">Ayuda <span class="glyphicon glyphicon glyphicon-question-sign"></span></button></li>
 			  <p class="navbar-text" id="user">Niño <span class="glyphicon glyphicon glyphicon-user"></span></p>
 			</ul>
 		  </div>
@@ -1939,7 +1939,7 @@
 				if(mode == true){
 					ini = false;
 					$('#user').html("Madre <span class='glyphicon glyphicon glyphicon-user'></span>");
-					$('#btnModo').css({"background-color": "#FF0800", "border-color": "#FF0800"});
+					//$('#btnModo').css({"background-color": "#FF0800", "border-color": "#FF0800"});
 					$('#a').css("background-color", "#AAAFB3 ");
 					$('#b').css("background-color", "#AAAFB3");
 					$('#c').css("background-color", "#AAAFB3");
@@ -1975,7 +1975,7 @@
 				}
 				else{
 					$('#user').html("Niño <span class='glyphicon glyphicon glyphicon-user'></span>");
-					$('#btnModo').css({"background-color": "#FFFFFF", "border-color": "#FFFFFF"});
+					//$('#btnModo').css({"background-color": "#FFFFFF", "border-color": "#FFFFFF"});
 				
 
 					$('#a').css("background-color", "#EAECEE");
