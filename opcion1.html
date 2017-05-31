@@ -217,7 +217,7 @@
 					$('#r1').css({"background-color": "#00cd00", "width": "25%"});
 					$('#r2').css({"background-color": "#00cd00", "width": "25%"});
 					$('#ratras').css({"background-color": "#00cd00", "width": "25%"});
-					$('#r3').css({"background-color": "#00cd00", "width": "25%", "display:": "block"});
+					$('#r3').css({"background-color": "#00cd00", "width": "25%", "display": "block"});
 					}
 				}
 			}
@@ -328,8 +328,10 @@
 						op2 = false;
 						opatras = true;
 						}
-					else
+					else{
 						tituloModo = false;
+						$('#pregunta').css({"background-color": "#ffffff", "border": "1px solid #ccc"});
+						}
 					mode = true;
 				}
 			}
