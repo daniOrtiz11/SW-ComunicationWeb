@@ -79,7 +79,8 @@ max-height:200px;
 	max-height:100px;
 }
 
-#textoAbajo{
+#textBottom{
+	padding-top:20px;
 	text-align: center;
 	font-weight: bold;
 }
