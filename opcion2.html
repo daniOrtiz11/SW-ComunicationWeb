@@ -165,6 +165,7 @@
 		var opCol8 = false; //HPY
 		var opCol9 = false; //IQZ
 		var opCol10 = false; //ESP_BORR_ATR
+		var opCol11 = false; //REPRODUCIR
 
 		var op1 = false; //A
 		var op2 = false; //B
@@ -196,6 +197,7 @@
 		var op28 = false; //ESPACIO
 		var op29 = false; //BORRAR
 		var op30 = false; //ATRAS
+		
 
 		var mode = true; //true-->niño, false-->madre
 		var ini = true; //variable para que no salte el click de volver del modo madre
@@ -221,9 +223,11 @@
 					if(cont == speed){
 						cont = 0;
 						if (columnas == true){
+							salir = false;
 						if (opCol1 == true){
 							columnas = true;
 								opCol1 = false; 
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#4EC2FC");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -259,6 +263,7 @@
 							else if (opCol2 == true){
 								columnas = true;
 								opCol2 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#4EC2FC");
 								$('#c').css("background-color", "#EAECEE");
@@ -294,6 +299,7 @@
 							else if (opCol3 == true){
 								columnas = true;
 								opCol3 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#4EC2FC");
@@ -329,6 +335,7 @@
 							else if (opCol4 == true){
 								columnas = true;
 								opCol4 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -364,6 +371,7 @@
 							else if (opCol5 == true){
 								columnas = true;
 								opCol5 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -399,6 +407,7 @@
 							else if (opCol6 == true){
 								columnas = true;
 								opCol6 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -434,6 +443,7 @@
 							else if (opCol7 == true){
 								columnas = true;
 								opCol7 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -469,6 +479,7 @@
 							else if (opCol8 == true){
 								columnas = true;
 								opCol8 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -504,6 +515,7 @@
 							else if (opCol9 == true){
 								columnas = true;
 								opCol9 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -540,6 +552,7 @@
 							else if (opCol10 == true){
 								columnas = true;
 								opCol10 = false;
+								$('#pregunta').css("background-color", "#FFFFFF");
 								$('#a').css("background-color", "#EAECEE");
 								$('#b').css("background-color", "#EAECEE");
 								$('#c').css("background-color", "#EAECEE");
@@ -570,6 +583,46 @@
 								$('#espacio').css("background-color", "#4EC2FC");
 								$('#borrar').css("background-color", "#4EC2FC");
 								$('#atras').css("background-color", "#4EC2FC");
+								opCol11 = true;
+							}
+							else if (opCol11 == true){
+								columnas = true;
+								opCol11 = false;
+								$('#pregunta').css("background-color", "#4EC2FC");
+								$('#a').css("background-color", "#EAECEE");
+								$('#b').css("background-color", "#EAECEE");
+								$('#c').css("background-color", "#EAECEE");
+								$('#d').css("background-color", "#EAECEE");
+								$('#e').css("background-color", "#EAECEE");
+								$('#f').css("background-color", "#EAECEE");
+								$('#g').css("background-color", "#EAECEE");
+								$('#h').css("background-color", "#EAECEE");
+								$('#i').css("background-color", "#EAECEE");
+								$('#j').css("background-color", "#EAECEE");
+								$('#k').css("background-color", "#EAECEE");
+								$('#l').css("background-color", "#EAECEE");
+								$('#m').css("background-color", "#EAECEE");
+								$('#n').css("background-color", "#EAECEE");
+								$('#enie').css("background-color", "#EAECEE");
+								$('#o').css("background-color", "#EAECEE");
+								$('#p').css("background-color", "#EAECEE");
+								$('#q').css("background-color", "#EAECEE");
+								$('#r').css("background-color", "#EAECEE");
+								$('#s').css("background-color", "#EAECEE");
+								$('#t').css("background-color", "#EAECEE");
+								$('#u').css("background-color", "#EAECEE");
+								$('#v').css("background-color", "#EAECEE");
+								$('#w').css("background-color", "#EAECEE");
+								$('#x').css("background-color", "#EAECEE");
+								$('#y').css("background-color", "#EAECEE");
+								$('#z').css("background-color", "#EAECEE");
+								$('#espacio').css("background-color", "#EAECEE");
+								$('#borrar').css("background-color", "#EAECEE");
+								$('#atras').css("background-color", "#EAECEE");
+								if(responsiveVoice.voiceSupport()) {
+								if(voz == true)
+								responsiveVoice.speak($('#pregunta').val());
+								}
 								opCol1 = true;
 							}
 							} else {
@@ -1341,7 +1394,7 @@
 								responsiveVoice.speak("R");
 								}
 								opCol2 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op20 == true){
 								columnas = false;
@@ -1382,7 +1435,7 @@
 								responsiveVoice.speak("S");
 								}
 								opCol3 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op21 == true){
 								columnas = true;
@@ -1423,7 +1476,7 @@
 								responsiveVoice.speak("T");
 								}
 								opCol4 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op22 == true){
 								columnas = false;
@@ -1464,7 +1517,7 @@
 								responsiveVoice.speak("U");
 								}
 								opCol5 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op23 == true){
 								columnas = false;
@@ -1505,7 +1558,7 @@
 								responsiveVoice.speak("V");
 								}
 								opCol6 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op24 == true){
 								columnas = false;
@@ -1546,7 +1599,7 @@
 								responsiveVoice.speak("W");
 								}
 								opCol7 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op25 == true){
 								columnas = false;
@@ -1587,7 +1640,7 @@
 								responsiveVoice.speak("X");
 								}
 								opCol8 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op26 == true){
 								columnas = false;
@@ -1628,7 +1681,7 @@
 								responsiveVoice.speak("Y");
 								}
 								opCol9 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op27 == true){
 								columnas = false;
@@ -1669,7 +1722,7 @@
 								responsiveVoice.speak("Z");
 								}
 								opCol10 = true;
-								columnas = true;
+								//columnas = true;
 							}
 							else if(op28 == true){
 								columnas = false;
@@ -1862,8 +1915,9 @@
 						if (salir == true)
 							window.location = "./home.html";
 						if(op1 == true){
-							salir = true;
-							window.location = "./home.html";
+							//salir = true;
+							$('#pregunta').val(texto + cadenaEscribir);
+							//window.location = "./home.html";
 						}
 						else if(op2 == true)
 							$('#pregunta').val(texto + cadenaEscribir);
@@ -1926,6 +1980,22 @@
 						else if(op30 == true){
 							$('#pregunta').val(texto.slice(0,-1));	
 						}
+						else if(opCol2 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol3 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol4 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol5 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol6 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol7 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol8 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
+						else if(opCol9 == true)
+							$('#pregunta').val(texto + cadenaEscribir);
 					}
 				}
 				else if(mode == true && ini == false){
